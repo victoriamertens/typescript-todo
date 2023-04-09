@@ -1,0 +1,17 @@
+{
+  "name": "typescript-work",
+  "version": "1.0.0",
+  "private": "true",
+  "main": "index.js",
+  "author": "victoria-mertens",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "client": "yarn workspace client dev",
+    "server": "yarn workspace server dev",
+    "dev": "yarn client & yarn server",
+    "build": "yarn workspace client build && yarn workspace server build"
+  }
+}
