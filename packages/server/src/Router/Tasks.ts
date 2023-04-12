@@ -17,13 +17,14 @@ Router.get('/', (req, res) => {
 
 Router.post('/', (req, res) => {
   console.log('Req.body:', req.body);
+  let name: string = req.body.name;
+  let description: string = req.body.description;
+  let postQuery = `INSERT INTO "tasks" ("name", "description") VALUES ($1, $2);`;
   pool
-    .query(
-      `INSERT INTO "tasks" ("name", "description") VALUES ('Testing POST', 'I hope this works');`
-    )
+    .query(postQuery, [name, description])
     .then((response) => {
       console.log(response.rows);
-      res.send(response.rows);
+      res.sendStatus(200);
     })
     .catch((err) => {
       res.sendStatus(500);

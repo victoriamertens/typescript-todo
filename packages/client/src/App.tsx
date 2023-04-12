@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { typedGet } from './api/promise';
+import { typedGet, typedPost } from './api/promise';
 
 function App() {
   const [test, setTest] = useState('');
+  const name: string = 'hardcodingname';
+  const description: string = 'hardcodeddescription';
 
   useEffect(() => {
     typedGet()
@@ -18,7 +20,14 @@ function App() {
   if (test === '') {
     return <p>Tesing App</p>;
   } else {
-    return <p>{test}</p>;
+    return (
+      <div>
+        <p>{test}</p>
+        <button onClick={() => typedPost(name, description)}>
+          Click me to Post
+        </button>
+      </div>
+    );
   }
 }
 

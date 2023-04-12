@@ -17,7 +17,14 @@ export async function typedGet(): Promise<GetResponse> {
   return Promise.resolve(response);
 }
 
-export async function typedPost(): Promise<PostResponse> {
-  const response = await axios({ method: 'post', url: '/api/tasks' });
+export async function typedPost(
+  name: string,
+  description: string
+): Promise<PostResponse> {
+  const response = await axios({
+    method: 'post',
+    url: '/api/tasks',
+    data: { name, description },
+  });
   return Promise.resolve(response);
 }
