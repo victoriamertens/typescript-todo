@@ -1,11 +1,8 @@
 import express from 'express';
-import pool from './pool';
+import pool from '../pool';
+const Router = express.Router();
 
-const app = express();
-
-const PORT = process.env.PORT || 5000;
-
-app.get('/api/tasks', (req, res) => {
+Router.get('/', (req, res) => {
   pool
     .query(`SELECT * FROM "tasks"`)
     .then((response) => {
@@ -17,7 +14,4 @@ app.get('/api/tasks', (req, res) => {
       console.log(err);
     });
 });
-
-app.listen(PORT, () => {
-  console.log('Listening on port:', PORT);
-});
+export default Router;

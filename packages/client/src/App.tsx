@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { typedPromise } from './api/promise';
+import { typedGet } from './api/promise';
 
 function App() {
   const [test, setTest] = useState('');
 
   useEffect(() => {
-    typedPromise()
+    typedGet()
       .then((response) => {
         setTest(response.data[0].name);
       })
