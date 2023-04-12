@@ -1,10 +1,14 @@
 import axios from 'axios';
 
-type Entry = {
+export type Entry = {
   name: string;
+  id: number;
+  description: string;
+  completed: boolean;
+  category_id: number | null;
 };
 
-type GetResponse = {
+export type GetResponse = {
   data: Entry[];
 };
 

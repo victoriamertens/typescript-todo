@@ -23,7 +23,7 @@ Router.post('/', (req, res) => {
   pool
     .query(postQuery, [name, description])
     .then((response) => {
-      console.log(response.rows);
+      console.log('Response:', response);
       res.sendStatus(200);
     })
     .catch((err) => {
