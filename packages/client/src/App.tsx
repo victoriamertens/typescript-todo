@@ -3,13 +3,13 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import axios from 'axios';
-import { testy } from './api/test';
+import { typedPromise } from './api/promise';
 
 function App() {
   const [test, setTest] = useState('');
 
   useEffect(() => {
-    testy()
+    typedPromise()
       .then((response) => {
         setTest(response.data[0].name);
       })

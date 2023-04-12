@@ -8,7 +8,7 @@ type TestyResponse = {
   data: Entry[];
 };
 
-export async function testy(): Promise<TestyResponse> {
+export async function typedPromise(): Promise<TestyResponse> {
   const response = await axios({ method: 'get', url: '/api/test' });
   return Promise.resolve(response);
 }
