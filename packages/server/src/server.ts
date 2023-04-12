@@ -1,22 +1,16 @@
 import express from 'express';
-import pool from './pool';
+import tasksRouter from './Router/Tasks';
+import bodyParser from 'body-parser';
 
 const app = express();
 
+// Body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const PORT = process.env.PORT || 5000;
 
-app.get('/api/tasks', (req, res) => {
-  pool
-    .query(`SELECT * FROM "tasks"`)
-    .then((response) => {
-      console.log(response.rows);
-      res.send(response.rows);
-    })
-    .catch((err) => {
-      res.sendStatus(500);
-      console.log(err);
-    });
-});
+app.use('/api/tasks', tasksRouter);
 
 app.listen(PORT, () => {
   console.log('Listening on port:', PORT);
