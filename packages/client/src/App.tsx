@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { typedGet, typedPost, GetResponse, Entry } from './api/promise';
+import Task from './Components/Task';
 
 function App() {
-  const [test, setTest] = useState<GetResponse | undefined>(undefined);
+  const [test, setTest] = useState<Entry[] | undefined>(undefined);
   const name: string = 'hardcodingname';
   const description: string = 'hardcodeddescription';
 
   useEffect(() => {
     typedGet()
       .then((response) => {
-        setTest(response);
+        setTest(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -22,8 +23,15 @@ function App() {
   } else {
     return (
       <div>
-        {test.data.map((spot: Entry) => {
-          return <p key={spot.id}>{JSON.stringify(spot)}</p>;
+        {test.map((spot: Entry) => {
+          return (
+            <Task
+              key={spot.id}
+              name={spot.name}
+              des={spot.description}
+              complete={spot.completed}
+            />
+          );
         })}
 
         <button onClick={() => typedPost(name, description)}>
