@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Task.css';
 
 type TaskComponentProps = {
   key: Number;
