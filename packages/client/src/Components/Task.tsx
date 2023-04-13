@@ -9,7 +9,7 @@ type TaskComponentProps = {
 };
 
 export default function Task(props: TaskComponentProps) {
-  const [checked, setChecked] = useState(props.complete);
+  const [checked, setChecked] = useState<boolean>(props.complete);
 
   function onComplete() {
     console.log('in onComplete', checked);

@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { typedGet, typedPost, GetResponse, Entry } from './api/promise';
 import Task from './Components/Task';
+import TaskInput from './Components/TaskInput';
 
 function App() {
   const [test, setTest] = useState<Entry[] | undefined>(undefined);
-  const name: string = 'hardcodingname';
-  const description: string = 'hardcodeddescription';
 
   useEffect(() => {
     typedGet()
@@ -23,6 +22,7 @@ function App() {
   } else {
     return (
       <div>
+        <TaskInput />
         {test.map((spot: Entry) => {
           return (
             <Task
@@ -33,10 +33,6 @@ function App() {
             />
           );
         })}
-
-        <button onClick={() => typedPost(name, description)}>
-          Click me to Post
-        </button>
       </div>
     );
   }
