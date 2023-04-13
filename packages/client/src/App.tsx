@@ -15,10 +15,10 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
 
   if (test === undefined) {
-    return <p>Tesing App</p>;
+    return <p>No data returned</p>;
   } else {
     return (
       <div>
