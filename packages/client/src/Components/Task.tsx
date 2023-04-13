@@ -1,4 +1,4 @@
-import { GetResponse, Entry } from '../api/promise';
+import { useState } from 'react';
 
 type TaskComponentProps = {
   key: Number;
@@ -8,5 +8,26 @@ type TaskComponentProps = {
 };
 
 export default function Task(props: TaskComponentProps) {
-  return <p>{props.name}</p>;
+  const [checked, setChecked] = useState(props.complete);
+
+  function onComplete() {
+    console.log('in onComplete', checked);
+    setChecked(!checked);
+  }
+  return (
+    <div>
+      {!checked && (
+        <input
+          className="task-line"
+          type="checkbox"
+          onClick={() => onComplete()}
+        />
+      )}
+      {checked && (
+        <input type="checkbox" defaultChecked onClick={() => onComplete()} />
+      )}
+      <p className="task-line">{props.name}</p>
+      <p className="task-line">{props.des}</p>
+    </div>
+  );
 }
