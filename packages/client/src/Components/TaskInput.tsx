@@ -2,18 +2,8 @@ import { typedPost } from '../api/promise';
 import { useState } from 'react';
 
 export default function TaskInput() {
-  const [name, setName] = useState<string | undefined>(undefined);
-  const [description, setDescription] = useState<string | undefined>(undefined);
-
-  function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-    let value: string = event.target.value;
-    setName(value);
-  }
-
-  function handleDescriptionChange(event: React.ChangeEvent<HTMLInputElement>) {
-    let value: string = event.target.value;
-    setDescription(value);
-  }
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   function handleError() {
     alert('Need to have entries in the inputs');
@@ -23,22 +13,22 @@ export default function TaskInput() {
     <div>
       <label htmlFor="name">Name</label>
       <input
+        value={name}
         type="text"
         id="name"
-        onChange={(event) => {
-          handleNameChange(event);
-        }}
+        onChange={(event) => setName(event.target.value)}
       ></input>
       <label htmlFor="description">Description</label>
       <input
+        value={description}
         type="text"
         id="description"
-        onChange={(event) => handleDescriptionChange(event)}
+        onChange={(event) => setDescription(event.target.value)}
       ></input>
 
       <button
         onClick={() => {
-          if (name === undefined || description === undefined) {
+          if (name === '' || description === '') {
             console.log(name, description);
             handleError();
           } else {
