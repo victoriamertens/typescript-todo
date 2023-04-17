@@ -29,9 +29,11 @@ function App() {
             <Task
               key={spot.id}
               name={spot.name}
-              des={spot.description}
-              complete={spot.completed}
-              subtasks={spot.sub_tasks}
+              description={spot.description}
+              completed={spot.completed}
+              sub_tasks={spot.sub_tasks}
+              id={spot.id}
+              category_id={spot.category_id}
             />
           );
         })}

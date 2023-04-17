@@ -1,12 +1,19 @@
 import axios from 'axios';
 
+export type sub_tasks = {
+  name: string;
+  id: Number;
+  description: string;
+  completed: boolean;
+};
+
 export type Entry = {
   name: string;
   id: number;
   description: string;
   completed: boolean;
   category_id: number | null;
-  sub_tasks: [];
+  sub_tasks: sub_tasks[];
 };
 
 export type GetResponse = {

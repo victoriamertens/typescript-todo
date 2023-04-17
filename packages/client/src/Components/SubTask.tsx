@@ -1,20 +1,20 @@
 import { SubTaskInput } from './SubTaskInput';
+import { sub_tasks } from '../api/promise';
 
 type SubTasksObjects = {
-  name: string;
-  id: Number;
-  description: string;
-  completed: boolean;
+  sub_tasks: sub_tasks[];
+  taskId: Number;
 };
 
 //There is a couple of different ways to destructure props, alternative = SubTask(props: {subtasks: []}) => props.subtasks
-export function SubTask({ subtasks }: { subtasks: SubTasksObjects[] }) {
-  console.log(subtasks);
+export function SubTask(props: SubTasksObjects) {
+  console.log(props.sub_tasks);
   return (
     <div>
       <p>SubTask function working </p>
-      {subtasks !== null && subtasks.map((subtask) => <p>{subtask.name}</p>)}
-      <SubTaskInput />
+      {props.sub_tasks !== null &&
+        props.sub_tasks.map((subtask) => <p>{subtask.name}</p>)}
+      <SubTaskInput taskId={props.taskId} />
     </div>
   );
 }

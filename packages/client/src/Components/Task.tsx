@@ -1,18 +1,11 @@
 import { useState } from 'react';
 import './Task.css';
 import { SubTask } from './SubTask';
+import { Entry } from '../api/promise';
 
-type TaskComponentProps = {
-  key: Number;
-  name: string;
-  des: string | null;
-  complete: boolean;
-  subtasks: [];
-};
-
-export default function Task(props: TaskComponentProps) {
+export default function Task(props: Entry) {
   console.log(props);
-  const [checked, setChecked] = useState<boolean>(props.complete);
+  const [checked, setChecked] = useState<boolean>(props.completed);
 
   function onComplete() {
     console.log('in onComplete', checked);
@@ -31,8 +24,8 @@ export default function Task(props: TaskComponentProps) {
         <input type="checkbox" defaultChecked onClick={() => onComplete()} />
       )}
       <p className="task-line">{props.name}</p>
-      <p className="task-line">{props.des}</p>
-      <SubTask subtasks={props.subtasks} />
+      <p className="task-line">{props.description}</p>
+      <SubTask sub_tasks={props.sub_tasks} taskId={props.id} />
     </div>
   );
 }
