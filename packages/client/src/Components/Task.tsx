@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Task.css';
+import { SubTask } from './SubTask';
 
 type TaskComponentProps = {
   key: Number;
@@ -29,6 +30,7 @@ export default function Task(props: TaskComponentProps) {
       )}
       <p className="task-line">{props.name}</p>
       <p className="task-line">{props.des}</p>
+      <SubTask />
     </div>
   );
 }
