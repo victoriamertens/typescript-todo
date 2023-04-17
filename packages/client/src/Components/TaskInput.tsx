@@ -1,5 +1,6 @@
 import { typedPost } from '../api/promise';
 import { useState } from 'react';
+import { postError } from '../ErrorHandling/errors';
 
 export default function TaskInput() {
   const [name, setName] = useState('');
@@ -7,6 +8,19 @@ export default function TaskInput() {
 
   function handleError() {
     alert('Need to have entries in the inputs');
+  }
+
+  async function handleSubmission() {
+    let response = await typedPost(name, description);
+    let status: Number = response.status;
+    console.log(status);
+    if (status === 200) {
+      setDescription('');
+      setName('');
+      window.location.reload();
+    } else {
+      postError(status);
+    }
   }
 
   return (
@@ -32,7 +46,7 @@ export default function TaskInput() {
             console.log(name, description);
             handleError();
           } else {
-            typedPost(name, description);
+            handleSubmission();
           }
         }}
       >

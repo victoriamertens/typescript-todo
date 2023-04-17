@@ -14,6 +14,7 @@ export type GetResponse = {
 
 type PostResponse = {
   data: '';
+  status: Number;
 };
 
 export async function typedGet(): Promise<GetResponse> {
