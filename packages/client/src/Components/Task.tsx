@@ -7,9 +7,11 @@ type TaskComponentProps = {
   name: string;
   des: string | null;
   complete: boolean;
+  subtasks: [];
 };
 
 export default function Task(props: TaskComponentProps) {
+  console.log(props);
   const [checked, setChecked] = useState<boolean>(props.complete);
 
   function onComplete() {
@@ -30,7 +32,7 @@ export default function Task(props: TaskComponentProps) {
       )}
       <p className="task-line">{props.name}</p>
       <p className="task-line">{props.des}</p>
-      <SubTask />
+      <SubTask subtasks={props.subtasks} />
     </div>
   );
 }

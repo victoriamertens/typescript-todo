@@ -6,6 +6,7 @@ export type Entry = {
   description: string;
   completed: boolean;
   category_id: number | null;
+  sub_tasks: [];
 };
 
 export type GetResponse = {

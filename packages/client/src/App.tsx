@@ -10,6 +10,7 @@ function App() {
   useEffect(() => {
     typedGet()
       .then((response) => {
+        console.log('HERE:', response);
         setTest(response.data);
       })
       .catch((error) => {
@@ -30,6 +31,7 @@ function App() {
               name={spot.name}
               des={spot.description}
               complete={spot.completed}
+              subtasks={spot.sub_tasks}
             />
           );
         })}
