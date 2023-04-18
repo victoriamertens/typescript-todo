@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { typedGet, typedPost, GetResponse, Entry } from './api/promise';
-import Task from './Components/Task';
+import { Task } from './Components/Task';
 import TaskInput from './Components/TaskInput';
 
 function App() {
