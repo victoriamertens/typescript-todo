@@ -39,7 +39,18 @@ Router.post('/', (req, res) => {
 export default Router;
 
 Router.post('/sub-tasks', (req, res) => {
-  console.log('REQUEST', req.body);
+  let name = req.body.name;
+  let description = req.body.description;
+  let task_id = req.body.task_id;
   let subTaskPostQuery = `INSERT INTO "sub_tasks" ("name", "description", "task_id") VALUES ($1, $2, $3);`;
-  res.sendStatus(200);
+  pool
+    .query(subTaskPostQuery, [name, description, task_id])
+    .then((response) => {
+      console.log(response);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
