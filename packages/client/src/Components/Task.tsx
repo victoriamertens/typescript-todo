@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Task.css';
 import { SubTask } from './SubTask';
 import { Entry } from '../api/promise';
-import { FunctionComponent, FC } from 'react';
+import { FC } from 'react';
 
 export const Task: FC<Entry> = ({
   name,
