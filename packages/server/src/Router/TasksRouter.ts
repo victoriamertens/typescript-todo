@@ -37,3 +37,8 @@ Router.post('/', (req, res) => {
     });
 });
 export default Router;
+
+Router.post('/sub-tasks', (req, res) => {
+  console.log('REQUEST', req.body);
+  res.sendStatus(200);
+});
