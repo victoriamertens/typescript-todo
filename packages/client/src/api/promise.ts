@@ -41,3 +41,16 @@ export async function typedPost(
   });
   return Promise.resolve(response);
 }
+
+export async function typedSubTaskPost(
+  name: string,
+  description: string,
+  task_id: Number
+): Promise<PostResponse> {
+  const response = await axios({
+    method: 'post',
+    url: '/api/sub-tasks',
+    data: { name, description, task_id },
+  });
+  return Promise.resolve(response);
+}

@@ -6,7 +6,7 @@ export default function TaskInput() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  function handleError() {
+  function handleImproperInputs() {
     alert('Need to have entries in the inputs');
   }
 
@@ -44,7 +44,7 @@ export default function TaskInput() {
         onClick={() => {
           if (name === '' || description === '') {
             console.log(name, description);
-            handleError();
+            handleImproperInputs();
           } else {
             handleSubmission();
           }
