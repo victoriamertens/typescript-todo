@@ -8,7 +8,7 @@ type SubTasksProps = {
 };
 
 //There is a couple of different ways to destructure props, alternative = SubTask(props: {subtasks: []}) => props.subtasks
-export const SubTask: FunctionComponent<SubTasksProps> = ({
+export const SubTaskList: FunctionComponent<SubTasksProps> = ({
   sub_tasks,
   taskId,
 }) => {

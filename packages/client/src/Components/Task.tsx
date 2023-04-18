@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Task.css';
-import { SubTask } from './SubTask';
+import { SubTaskList } from './SubTaskList';
 import { Entry } from '../api/promise';
 import { FC } from 'react';
 
@@ -32,7 +32,7 @@ export const Task: FC<Entry> = ({
       )}
       <p className="task-line">{name}</p>
       <p className="task-line">{description}</p>
-      <SubTask sub_tasks={sub_tasks} taskId={id} />
+      <SubTaskList sub_tasks={sub_tasks} taskId={id} />
     </div>
   );
 };
