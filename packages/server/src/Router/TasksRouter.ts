@@ -40,5 +40,6 @@ export default Router;
 
 Router.post('/sub-tasks', (req, res) => {
   console.log('REQUEST', req.body);
+  let subTaskPostQuery = `INSERT INTO "sub_tasks" ("name", "description", "task_id") VALUES ($1, $2, $3);`;
   res.sendStatus(200);
 });
