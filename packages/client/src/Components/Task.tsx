@@ -13,10 +13,15 @@ export const Task: FC<Entry> = ({
   sub_tasks,
 }) => {
   const [checked, setChecked] = useState<boolean>(completed);
+  const [showSubTasks, setShowSubTasks] = useState<boolean>(false);
 
   function onComplete() {
     console.log('in onComplete', checked);
     setChecked(!checked);
+  }
+
+  function changeShowSubTasks() {
+    setShowSubTasks(!showSubTasks);
   }
   return (
     <div>
@@ -32,7 +37,14 @@ export const Task: FC<Entry> = ({
       )}
       <p className="task-line">{name}</p>
       <p className="task-line">{description}</p>
-      <SubTaskList sub_tasks={sub_tasks} taskId={id} />
+      {showSubTasks && (
+        <button onClick={() => changeShowSubTasks()}>Hide Sub-Tasks</button>
+      )}
+      {!showSubTasks && (
+        <button onClick={() => changeShowSubTasks()}>Show Sub-Tasks</button>
+      )}
+
+      {showSubTasks && <SubTaskList sub_tasks={sub_tasks} taskId={id} />}
     </div>
   );
 };
