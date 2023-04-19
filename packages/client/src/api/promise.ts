@@ -21,13 +21,15 @@ export type GetResponse = {
 };
 
 type PostResponse = {
-  data: '';
+  data: string;
   status: Number;
 };
 
-type PutResponse = {
-  data: '';
-  status: Number;
+export type PutResponse = {
+  response: {
+    data: string;
+    status: Number;
+  };
 };
 
 export async function typedGet(): Promise<GetResponse> {
@@ -61,15 +63,24 @@ export async function typedSubTaskPost(
   return Promise.resolve(response);
 }
 
-export async function typedPutTask(
-  task_id: Number,
-  completed: boolean
-): Promise<PutResponse> {
+export async function typedPutTask(task_id: Number, completed: boolean) {
   console.log('Made it to the function:', task_id, completed);
-  const response = await axios({
+  return axios({
     method: 'put',
     url: '/api/tasks',
     data: { task_id, completed },
-  });
-  return Promise.resolve(response);
+  })
+    .then()
+    .catch((err) => {
+      console.log('ERROR:', err);
+      return err;
+    });
+
+  // const response = await axios({
+  //   method: 'put',
+  //   url: '/api/tasks',
+  //   data: { task_id, completed },
+  // });
+  // console.log('RESPONSE:', response);
+  // return response;
 }

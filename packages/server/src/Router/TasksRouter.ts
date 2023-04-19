@@ -65,6 +65,10 @@ Router.put('/', (req, res) => {
     .query(taskPutQuery, [completed, task_id])
     .then((response) => {
       console.log(response);
+      res.sendStatus(200);
     })
-    .catch((err) => console.log('ERROR:', err));
+    .catch((err) => {
+      console.log('ERROR:', err);
+      res.sendStatus(500);
+    });
 });
