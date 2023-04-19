@@ -52,7 +52,6 @@ export async function typedSubTaskPost(
   description: string,
   task_id: Number
 ): Promise<PostResponse> {
-  console.log('In post subtasks');
   const response = await axios({
     method: 'post',
     url: '/api/tasks/sub-tasks',
@@ -65,14 +64,12 @@ export function typedPutTask(
   task_id: Number,
   completed: boolean
 ): Promise<PutResponse> {
-  console.log('Made it to the function:', task_id, completed);
   return axios({
     method: 'put',
     url: '/api/tasks',
     data: { task_id, completed },
   })
     .then((response) => {
-      console.log('typedPutTask:', response);
       return response;
     })
     .catch((err) => {
