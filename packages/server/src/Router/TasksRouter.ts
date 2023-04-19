@@ -58,5 +58,13 @@ Router.post('/sub-tasks', (req, res) => {
 Router.put('/', (req, res) => {
   let task_id = req.body.task_id;
   let completed = req.body.completed;
-  console.log('Connected to the backend!', task_id, completed);
+  let taskPutQuery = `UPDATE tasks 
+  SET "completed" = $1 
+  WHERE "id" = $2; `;
+  pool
+    .query(taskPutQuery, [completed, task_id])
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => console.log('ERROR:', err));
 });
