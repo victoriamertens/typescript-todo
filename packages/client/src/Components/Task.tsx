@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Task.css';
 import { SubTaskList } from './SubTaskList';
-import { Entry } from '../api/promise';
+import { Entry, typedPutTask } from '../api/promise';
 import { FC } from 'react';
 
 export const Task: FC<Entry> = ({
@@ -15,8 +15,16 @@ export const Task: FC<Entry> = ({
   const [checked, setChecked] = useState<boolean>(completed);
   const [showSubTasks, setShowSubTasks] = useState<boolean>(false);
 
-  function onComplete() {
+  async function onComplete() {
     console.log('in onComplete', checked);
+    let response = await typedPutTask(id, !completed);
+    let status = response.status;
+    if (status === 200) {
+      window.location.reload();
+    } else {
+      console.log('ERROR:', response.status);
+      alert('Updating task failed, try again.');
+    }
     setChecked(!checked);
   }
 

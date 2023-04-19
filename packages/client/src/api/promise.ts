@@ -65,6 +65,7 @@ export async function typedPutTask(
   task_id: Number,
   completed: boolean
 ): Promise<PutResponse> {
+  console.log('Made it to the function:', task_id, completed);
   const response = await axios({
     method: 'put',
     url: '/api/tasks',

@@ -15,8 +15,6 @@ export default function TaskInput() {
     let status: Number = response.status;
     console.log(status);
     if (status === 200) {
-      setDescription('');
-      setName('');
       window.location.reload();
     } else {
       postError(status);
