@@ -54,3 +54,9 @@ Router.post('/sub-tasks', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+Router.put('/', (req, res) => {
+  let task_id = req.body.task_id;
+  let completed = req.body.completed;
+  console.log('Connected to the backend!', task_id, completed);
+});
