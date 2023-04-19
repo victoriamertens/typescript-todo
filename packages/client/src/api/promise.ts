@@ -26,10 +26,8 @@ type PostResponse = {
 };
 
 export type PutResponse = {
-  response: {
-    data: string;
-    status: Number;
-  };
+  data: string;
+  status: Number;
 };
 
 export async function typedGet(): Promise<GetResponse> {
@@ -63,7 +61,10 @@ export async function typedSubTaskPost(
   return Promise.resolve(response);
 }
 
-export async function typedPutTask(task_id: Number, completed: boolean) {
+export function typedPutTask(
+  task_id: Number,
+  completed: boolean
+): Promise<PutResponse> {
   console.log('Made it to the function:', task_id, completed);
   return axios({
     method: 'put',
@@ -71,6 +72,7 @@ export async function typedPutTask(task_id: Number, completed: boolean) {
     data: { task_id, completed },
   })
     .then((response) => {
+      console.log('typedPutTask:', response);
       return response;
     })
     .catch((err) => {
