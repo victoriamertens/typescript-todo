@@ -76,12 +76,4 @@ export function typedPutTask(
       console.log('ERROR:', err);
       return err;
     });
-
-  // const response = await axios({
-  //   method: 'put',
-  //   url: '/api/tasks',
-  //   data: { task_id, completed },
-  // });
-  // console.log('RESPONSE:', response);
-  // return response;
 }
