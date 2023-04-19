@@ -70,7 +70,9 @@ export async function typedPutTask(task_id: Number, completed: boolean) {
     url: '/api/tasks',
     data: { task_id, completed },
   })
-    .then()
+    .then((response) => {
+      return response;
+    })
     .catch((err) => {
       console.log('ERROR:', err);
       return err;

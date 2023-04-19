@@ -17,10 +17,11 @@ export const Task: FC<Entry> = ({
 
   async function onComplete() {
     console.log('in onComplete', checked);
-    let { response }: PutResponse = await typedPutTask(id, completed);
+    let { response }: PutResponse = await typedPutTask(id, !completed);
     console.log('IN TASK:', response);
     let status = response.status;
     if (status === 200) {
+      console.log('Reloaded');
       window.location.reload();
     } else if (status === 500) {
       console.log('ERROR in onComplete:', status);
