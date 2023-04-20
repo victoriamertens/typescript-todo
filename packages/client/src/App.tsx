@@ -22,7 +22,7 @@ function App() {
     return <p>No data returned</p>;
   } else {
     return (
-      <div>
+      <div className="Tasks-Bar">
         <TaskInput />
         {test.map((spot: Entry) => {
           return (

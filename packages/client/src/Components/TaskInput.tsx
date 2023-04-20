@@ -1,6 +1,7 @@
 import { typedPost } from '../api/promise';
 import { useState } from 'react';
 import { postError } from '../ErrorHandling/errors';
+import './TaskInput.css';
 
 export default function TaskInput() {
   const [name, setName] = useState('');
@@ -22,34 +23,37 @@ export default function TaskInput() {
   }
 
   return (
-    <div>
-      <label htmlFor="name">Name</label>
-      <input
-        value={name}
-        type="text"
-        id="name"
-        onChange={(event) => setName(event.target.value)}
-      ></input>
-      <label htmlFor="description">Description</label>
-      <input
-        value={description}
-        type="text"
-        id="description"
-        onChange={(event) => setDescription(event.target.value)}
-      ></input>
-
-      <button
-        onClick={() => {
-          if (name === '' || description === '') {
-            console.log(name, description);
-            handleImproperInputs();
-          } else {
-            handleSubmission();
-          }
-        }}
-      >
-        Click me to Post
-      </button>
+    <div className="task-input">
+      <div className="inputs">
+        <label htmlFor="name">Name</label>
+        <input
+          value={name}
+          type="text"
+          id="name"
+          onChange={(event) => setName(event.target.value)}
+        ></input>
+        <label htmlFor="description">Description</label>
+        <input
+          value={description}
+          type="text"
+          id="description"
+          onChange={(event) => setDescription(event.target.value)}
+        ></input>
+      </div>
+      <div className="task-input-btn">
+        <button
+          onClick={() => {
+            if (name === '' || description === '') {
+              console.log(name, description);
+              handleImproperInputs();
+            } else {
+              handleSubmission();
+            }
+          }}
+        >
+          Add Task
+        </button>
+      </div>
     </div>
   );
 }
