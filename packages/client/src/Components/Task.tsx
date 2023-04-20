@@ -33,16 +33,28 @@ export const Task: FC<Entry> = ({
   return (
     <div>
       {!checked && (
-        <input
-          className="task-line"
-          type="checkbox"
-          onClick={() => onComplete()}
-        />
+        <>
+          <input
+            id="task-checkbox"
+            className="task-line"
+            type="checkbox"
+            onClick={() => onComplete()}
+          />
+          <label htmlFor="task-checkbox">{name}</label>
+        </>
       )}
       {checked && (
-        <input type="checkbox" defaultChecked onClick={() => onComplete()} />
+        <>
+          <input
+            type="checkbox"
+            id="task-checkbox"
+            defaultChecked
+            onClick={() => onComplete()}
+          />
+          <label htmlFor="task-checkbox">{name}</label>
+        </>
       )}
-      <p className="task-line">{name}</p>
+
       <p className="task-line">{description}</p>
       {showSubTasks && (
         <button onClick={() => changeShowSubTasks()}>Hide Sub-Tasks</button>

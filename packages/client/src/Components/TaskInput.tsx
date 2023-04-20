@@ -25,7 +25,7 @@ export default function TaskInput() {
   return (
     <div className="task-input">
       <div className="inputs">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Task</label>
         <input
           value={name}
           type="text"
