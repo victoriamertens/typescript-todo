@@ -35,13 +35,13 @@ export const Task: FC<Entry> = ({
     <div>
       <div className="task-item">
         <input
-          id="task-checkbox"
-          className="task-line"
+          id={name}
+          className="task-checkbox"
           type="checkbox"
           defaultChecked={completed}
           onClick={() => onComplete()}
         />
-        <label htmlFor="task-checkbox">{name}</label>
+        <label htmlFor={name}>{name}</label>
         <div id="dropdown-div">
           <button
             id="drop-down"

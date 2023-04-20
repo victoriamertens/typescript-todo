@@ -3,7 +3,7 @@
   padding: 10px;
 } */
 
-#task-checkbox {
+.task-checkbox {
   margin: 0px 50px 0px 50px;
   vertical-align: middle;
 }
