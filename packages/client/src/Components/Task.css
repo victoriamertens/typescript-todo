@@ -2,3 +2,8 @@
   display: inline;
   padding: 10px;
 }
+
+#task-checkbox {
+  margin: 0px 50px 0px 50px;
+  vertical-align: middle;
+}
