@@ -3,6 +3,7 @@ import './Task.css';
 import { SubTaskList } from './SubTaskList';
 import { Entry, typedPutTask, PutResponse } from '../api/promise';
 import { FC } from 'react';
+import { DropDownSVG } from '../assets/DropDownSVG';
 
 export const Task: FC<Entry> = ({
   name,
@@ -12,7 +13,7 @@ export const Task: FC<Entry> = ({
   category_id,
   sub_tasks,
 }) => {
-  const [checked, setChecked] = useState<boolean>(completed);
+  const [viewDescription, setviewDescription] = useState<boolean>(false);
   const [showSubTasks, setShowSubTasks] = useState<boolean>(false);
 
   async function onComplete() {
@@ -32,38 +33,53 @@ export const Task: FC<Entry> = ({
   }
   return (
     <div>
-      {!checked && (
-        <>
-          <input
-            id="task-checkbox"
-            className="task-line"
-            type="checkbox"
-            onClick={() => onComplete()}
-          />
-          <label htmlFor="task-checkbox">{name}</label>
-        </>
-      )}
-      {checked && (
-        <>
-          <input
-            type="checkbox"
-            id="task-checkbox"
-            defaultChecked
-            onClick={() => onComplete()}
-          />
-          <label htmlFor="task-checkbox">{name}</label>
-        </>
-      )}
+      <div className="task-item">
+        <input
+          id="task-checkbox"
+          className="task-line"
+          type="checkbox"
+          defaultChecked={completed}
+          onClick={() => onComplete()}
+        />
+        <label htmlFor="task-checkbox">{name}</label>
+        <div id="dropdown-div">
+          <button
+            id="drop-down"
+            onClick={() => {
+              setviewDescription(!viewDescription);
+            }}
+          >
+            <DropDownSVG />
+          </button>
+        </div>
+      </div>
+      <>
+        {viewDescription && (
+          <div>
+            <p> Description: {description}</p>
+            {showSubTasks && (
+              <button onClick={() => changeShowSubTasks()}>
+                Hide Sub-Tasks
+              </button>
+            )}
+            {!showSubTasks && (
+              <button onClick={() => changeShowSubTasks()}>
+                Show Sub-Tasks
+              </button>
+            )}
 
-      <p className="task-line">{description}</p>
-      {showSubTasks && (
+            {showSubTasks && <SubTaskList sub_tasks={sub_tasks} taskId={id} />}
+          </div>
+        )}
+      </>
+      {/* {showSubTasks && (
         <button onClick={() => changeShowSubTasks()}>Hide Sub-Tasks</button>
       )}
       {!showSubTasks && (
         <button onClick={() => changeShowSubTasks()}>Show Sub-Tasks</button>
       )}
 
-      {showSubTasks && <SubTaskList sub_tasks={sub_tasks} taskId={id} />}
+      {showSubTasks && <SubTaskList sub_tasks={sub_tasks} taskId={id} />} */}
     </div>
   );
 };

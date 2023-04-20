@@ -1,9 +1,29 @@
-.task-line {
+/* .task-line {
   display: inline;
   padding: 10px;
-}
+} */
 
 #task-checkbox {
   margin: 0px 50px 0px 50px;
   vertical-align: middle;
+}
+
+label {
+  width: 300px;
+}
+
+#drop-down {
+  background-color: lightblue;
+  margin: 10px;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
 }
