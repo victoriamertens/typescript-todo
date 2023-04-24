@@ -5,26 +5,26 @@ import { Task } from './Components/Task';
 import TaskInput from './Components/TaskInput';
 
 function App() {
-  const [test, setTest] = useState<Entry[] | undefined>(undefined);
+  const [allTasks, setAllTasks] = useState<Entry[] | undefined>(undefined);
 
   useEffect(() => {
     typedGet()
       .then((response) => {
         console.log('HERE:', response);
-        setTest(response.data);
+        setAllTasks(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  if (test === undefined) {
+  if (allTasks === undefined) {
     return <p>No data returned</p>;
   } else {
     return (
       <div className="Tasks-Bar">
         <TaskInput />
-        {test.map((spot: Entry) => {
+        {allTasks.map((spot: Entry) => {
           return (
             <Task
               key={spot.id}

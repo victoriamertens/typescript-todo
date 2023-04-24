@@ -35,6 +35,14 @@ export async function typedGet(): Promise<GetResponse> {
   return Promise.resolve(response);
 }
 
+export async function typedGetCategories(): Promise<GetResponse> {
+  const response = await axios({
+    method: 'get',
+    url: '/api/tasks/categories',
+  });
+  return Promise.resolve(response);
+}
+
 export async function typedPost(
   name: string,
   description: string
