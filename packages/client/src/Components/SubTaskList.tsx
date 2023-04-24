@@ -2,13 +2,13 @@ import { SubTaskInput } from './SubTaskInput';
 import { Sub_Task } from '../api/promise';
 import { FunctionComponent } from 'react';
 
-type SubTasksProps = {
+type SubTasksProp = {
   sub_tasks: Sub_Task[];
   taskId: Number;
 };
 
 //There is a couple of different ways to destructure props, alternative = SubTask(props: {subtasks: []}) => props.subtasks
-export const SubTaskList: FunctionComponent<SubTasksProps> = ({
+export const SubTaskList: FunctionComponent<SubTasksProp> = ({
   sub_tasks,
   taskId,
 }) => {
