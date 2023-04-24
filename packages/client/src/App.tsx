@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { typedGet, typedGetCategories, Entry } from './api/promise';
+import { typedGet, typedGetCategories, Entry, Categories } from './api/promise';
 import { Task } from './Components/Task';
 import TaskInput from './Components/TaskInput';
 import { CategorySelector } from './Components/CategorySelector';
 
 function App() {
-  const [allTasks, setAllTasks] = useState<Entry[] | undefined>(undefined);
-  const [allCategories, setAllCategories] = useState<Entry[] | undefined>(
-    undefined
-  );
+  const [allTasks, setAllTasks] = useState<Entry[]>([]);
+  const [allCategories, setAllCategories] = useState<Categories[]>([]);
 
   useEffect(() => {
     typedGet()
@@ -29,14 +27,15 @@ function App() {
         console.log(error);
       });
   }, []);
-
+  console.log('Catetogires:', allCategories);
   if (allTasks === undefined) {
     return <p>No data returned</p>;
   } else {
     return (
       <div className="Tasks-Bar">
         <TaskInput />
-        <CategorySelector />
+
+        <CategorySelector categories={allCategories} />
         {allTasks.map((spot: Entry) => {
           return (
             <Task

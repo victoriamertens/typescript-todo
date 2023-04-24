@@ -15,6 +15,11 @@ export type Entry = {
   category_id: number | null;
   sub_tasks: sub_tasks[];
 };
+export type Categories = {
+  name: string;
+  id: number;
+  description: string;
+};
 
 export type GetResponse = {
   data: Entry[];
