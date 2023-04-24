@@ -5,7 +5,7 @@ const Router = express.Router();
 Router.get('/', (req, res) => {
   pool
     .query(
-      `SELECT "tasks"."id", "tasks"."name", "tasks"."description", "tasks"."completed",json_agg ( "sub_tasks".*) FILTER (WHERE "sub_tasks"."id" IS NOT NULL) AS sub_tasks
+      `SELECT "tasks"."id", "tasks"."name", "tasks"."description", "tasks"."completed", "tasks"."category_id", json_agg ( "sub_tasks".*) FILTER (WHERE "sub_tasks"."id" IS NOT NULL) AS sub_tasks
       FROM "tasks" 
       LEFT JOIN "sub_tasks" ON "sub_tasks"."task_id" = "tasks"."id"
       GROUP BY "tasks"."id";  `

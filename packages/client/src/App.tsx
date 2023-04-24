@@ -36,6 +36,7 @@ function App() {
       <div className="Tasks-Bar">
         <TaskInput />
         {allTasks.map((spot: Entry) => {
+          console.log('SPOT:', spot.category_id);
           return (
             <Task
               key={spot.id}
