@@ -20,6 +20,19 @@ Router.get('/', (req, res) => {
     });
 });
 
+Router.get('/categories', (req, res) => {
+  pool
+    .query(`SELECT * FROM "categories";`)
+    .then((response) => {
+      console.log(response.rows);
+      res.send(response.rows);
+    })
+    .catch((err) => {
+      res.sendStatus(500);
+      console.log(err);
+    });
+});
+
 Router.post('/', (req, res) => {
   console.log('Req.body:', req.body);
   let name: string = req.body.name;
