@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { typedGet, typedGetCategories, Entry, Categories } from './api/promise';
+import { typedGet, typedGetCategories, Entry, Category } from './api/promise';
 import { Task } from './Components/Task';
 import TaskInput from './Components/TaskInput';
 import { CategorySelector } from './Components/CategorySelector';
 
 function App() {
   const [allTasks, setAllTasks] = useState<Entry[]>([]);
-  const [allCategories, setAllCategories] = useState<Categories[]>([]);
+  const [allCategories, setAllCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     typedGet()

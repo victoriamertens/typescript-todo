@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export type sub_tasks = {
+export type Sub_Task = {
   name: string;
   id: Number;
   description: string;
@@ -13,9 +13,9 @@ export type Entry = {
   description: string;
   completed: boolean;
   category_id: number | null;
-  sub_tasks: sub_tasks[];
+  sub_tasks: Sub_Task[];
 };
-export type Categories = {
+export type Category = {
   name: string;
   id: number;
   description: string;

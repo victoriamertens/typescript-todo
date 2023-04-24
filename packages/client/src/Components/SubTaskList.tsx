@@ -1,9 +1,9 @@
 import { SubTaskInput } from './SubTaskInput';
-import { sub_tasks } from '../api/promise';
+import { Sub_Task } from '../api/promise';
 import { FunctionComponent } from 'react';
 
 type SubTasksProps = {
-  sub_tasks: sub_tasks[];
+  sub_tasks: Sub_Task[];
   taskId: Number;
 };
 
