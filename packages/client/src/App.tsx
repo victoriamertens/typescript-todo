@@ -3,6 +3,7 @@ import './App.css';
 import { typedGet, typedGetCategories, Entry } from './api/promise';
 import { Task } from './Components/Task';
 import TaskInput from './Components/TaskInput';
+import { CategorySelector } from './Components/CategorySelector';
 
 function App() {
   const [allTasks, setAllTasks] = useState<Entry[] | undefined>(undefined);
@@ -35,8 +36,8 @@ function App() {
     return (
       <div className="Tasks-Bar">
         <TaskInput />
+        <CategorySelector />
         {allTasks.map((spot: Entry) => {
-          console.log('SPOT:', spot.category_id);
           return (
             <Task
               key={spot.id}
