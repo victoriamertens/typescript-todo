@@ -72,14 +72,6 @@ export const Task: FC<Entry> = ({
           </div>
         )}
       </>
-      {/* {showSubTasks && (
-        <button onClick={() => changeShowSubTasks()}>Hide Sub-Tasks</button>
-      )}
-      {!showSubTasks && (
-        <button onClick={() => changeShowSubTasks()}>Show Sub-Tasks</button>
-      )}
-
-      {showSubTasks && <SubTaskList sub_tasks={sub_tasks} taskId={id} />} */}
     </div>
   );
 };

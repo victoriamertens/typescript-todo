@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     typedGet()
       .then((response) => {
-        console.log('Tasks response:', response);
         setAllTasks(response.data);
       })
       .catch((error) => {
@@ -27,7 +26,7 @@ function App() {
         console.log(error);
       });
   }, []);
-  console.log('Catetogires:', allCategories);
+
   if (allTasks === undefined) {
     return <p>No data returned</p>;
   } else {

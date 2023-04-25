@@ -13,7 +13,7 @@ export function SubTaskInput({ taskId }: { taskId: Number }) {
   async function handleSubTaskSubmission() {
     let response = await typedSubTaskPost(name, description, taskId);
     let status: Number = response.status;
-    console.log(status);
+
     if (status === 200) {
       setDescription('');
       setName('');
@@ -43,7 +43,6 @@ export function SubTaskInput({ taskId }: { taskId: Number }) {
       <button
         onClick={() => {
           if (name === '' || description === '') {
-            console.log(name, description);
             handleImproperInputs();
           } else {
             handleSubTaskSubmission();

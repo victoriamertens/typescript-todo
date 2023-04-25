@@ -12,7 +12,6 @@ export const SubTaskList: FunctionComponent<SubTasksProp> = ({
   sub_tasks,
   taskId,
 }) => {
-  console.log(sub_tasks);
   return (
     <div>
       <p>SubTask function working </p>

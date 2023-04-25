@@ -14,7 +14,6 @@ export default function TaskInput() {
   async function handleSubmission() {
     let response = await typedPost(name, description);
     let status: Number = response.status;
-    console.log(status);
     if (status === 200) {
       window.location.reload();
     } else {
@@ -44,7 +43,6 @@ export default function TaskInput() {
         <button
           onClick={() => {
             if (name === '' || description === '') {
-              console.log(name, description);
               handleImproperInputs();
             } else {
               handleSubmission();
