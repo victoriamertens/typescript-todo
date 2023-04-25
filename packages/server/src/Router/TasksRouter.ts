@@ -36,7 +36,12 @@ Router.get('/categories', (req, res) => {
 Router.post('/', (req, res) => {
   let name: string = req.body.name;
   let description: string = req.body.description;
-  let category: string | Number = req.body.category;
+  let category: Number | null;
+  if (req.body.category === '') {
+    category = null;
+  } else {
+    category = req.body.category;
+  }
   console.log('CATEGORY:', category);
   let postQuery = `INSERT INTO "tasks" ("name", "description", "category_id") VALUES ($1, $2, $3);`;
   pool
