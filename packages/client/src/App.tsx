@@ -8,7 +8,8 @@ import { CategorySelector } from './Components/CategorySelector';
 function App() {
   const [allTasks, setAllTasks] = useState<Entry[]>([]);
   const [allCategories, setAllCategories] = useState<Category[]>([]);
-
+  const [Filter, setFilter] = useState(0);
+  console.log(Filter);
   useEffect(() => {
     typedGet()
       .then((response) => {
@@ -34,7 +35,7 @@ function App() {
       <div className="Tasks-Bar">
         <TaskInput />
 
-        <CategorySelector categories={allCategories} />
+        <CategorySelector categories={allCategories} setFilter={setFilter} />
         {allTasks.map((spot: Entry) => {
           return (
             <Task
