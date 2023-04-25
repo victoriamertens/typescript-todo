@@ -34,12 +34,13 @@ Router.get('/categories', (req, res) => {
 });
 
 Router.post('/', (req, res) => {
-  console.log('Req.body:', req.body);
   let name: string = req.body.name;
   let description: string = req.body.description;
-  let postQuery = `INSERT INTO "tasks" ("name", "description") VALUES ($1, $2);`;
+  let category: string | Number = req.body.category;
+  console.log('CATEGORY:', category);
+  let postQuery = `INSERT INTO "tasks" ("name", "description", "category_id") VALUES ($1, $2, $3);`;
   pool
-    .query(postQuery, [name, description])
+    .query(postQuery, [name, description, category])
     .then((response) => {
       console.log('Response:', response);
       res.sendStatus(200);

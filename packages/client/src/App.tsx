@@ -9,7 +9,6 @@ function App() {
   const [allTasks, setAllTasks] = useState<Entry[]>([]);
   const [allCategories, setAllCategories] = useState<Category[]>([]);
   const [filter, setFilter] = useState(0);
-  console.log(filter);
 
   useEffect(() => {
     typedGet()
@@ -34,7 +33,7 @@ function App() {
   } else {
     return (
       <div className="Tasks-Bar">
-        <TaskInput />
+        <TaskInput allCategories={allCategories} />
 
         <CategorySelector categories={allCategories} setFilter={setFilter} />
         {filter === 0

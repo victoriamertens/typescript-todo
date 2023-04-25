@@ -50,12 +50,13 @@ export async function typedGetCategories(): Promise<GetResponse> {
 
 export async function typedPost(
   name: string,
-  description: string
+  description: string,
+  category: Number | string
 ): Promise<PostResponse> {
   const response = await axios({
     method: 'post',
     url: '/api/tasks',
-    data: { name, description },
+    data: { name, description, category },
   });
   return Promise.resolve(response);
 }
