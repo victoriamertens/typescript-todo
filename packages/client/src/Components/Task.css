@@ -27,3 +27,11 @@ label {
   align-items: center;
   width: 100%;
 }
+
+.Description {
+  margin-left: 150px;
+}
+
+strong {
+  color: black;
+}

@@ -55,8 +55,10 @@ export const Task: FC<Entry> = ({
       </div>
       <>
         {viewDescription && (
-          <div>
-            <p> Description: {description}</p>
+          <div className="Description">
+            <p>
+              <strong>Description: </strong> {description}
+            </p>
             {showSubTasks && (
               <button onClick={() => changeShowSubTasks()}>
                 Hide Sub-Tasks
