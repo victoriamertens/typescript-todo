@@ -13,13 +13,15 @@ export const CategorySelector: FunctionComponent<CategoryProp> = ({
   function handleChange(filterId: Number) {
     setFilter(filterId);
   }
-
+  const CSS = `#filter-cat{ margin-right: 400px;}`;
   return (
     <div>
-      <label htmlFor="category">Filter by Category:</label>
+      <label htmlFor="category-filter" id="filter-cat">
+        Filter by Category:
+      </label>
       <select
         name="category"
-        id="category"
+        id="category-filter"
         onChange={(el) => {
           let idNumber = Number(el.target.value);
           handleChange(idNumber);
@@ -34,6 +36,7 @@ export const CategorySelector: FunctionComponent<CategoryProp> = ({
           );
         })}
       </select>
+      <style>{CSS}</style>
     </div>
   );
 };
