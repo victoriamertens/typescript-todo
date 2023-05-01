@@ -1,6 +1,7 @@
 import { SubTaskInput } from './SubTaskInput';
 import { Sub_Task } from '../api/promise';
 import { FunctionComponent } from 'react';
+import './SubTaskList.css';
 
 type SubTasksProp = {
   sub_tasks: Sub_Task[];
@@ -13,7 +14,7 @@ export const SubTaskList: FunctionComponent<SubTasksProp> = ({
   taskId,
 }) => {
   return (
-    <div>
+    <div id="sub-task-list">
       {sub_tasks !== null &&
         sub_tasks.map((subtask) => (
           <div>
