@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export type sub_tasks = {
+export type Sub_Task = {
   name: string;
   id: Number;
   description: string;
@@ -13,7 +13,12 @@ export type Entry = {
   description: string;
   completed: boolean;
   category_id: number | null;
-  sub_tasks: sub_tasks[];
+  sub_tasks: Sub_Task[];
+};
+export type Category = {
+  name: string;
+  id: number;
+  description: string;
 };
 
 export type GetResponse = {
@@ -35,14 +40,23 @@ export async function typedGet(): Promise<GetResponse> {
   return Promise.resolve(response);
 }
 
+export async function typedGetCategories(): Promise<GetResponse> {
+  const response = await axios({
+    method: 'get',
+    url: '/api/tasks/categories',
+  });
+  return Promise.resolve(response);
+}
+
 export async function typedPost(
   name: string,
-  description: string
+  description: string,
+  category: Number | string
 ): Promise<PostResponse> {
   const response = await axios({
     method: 'post',
     url: '/api/tasks',
-    data: { name, description },
+    data: { name, description, category },
   });
   return Promise.resolve(response);
 }

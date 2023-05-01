@@ -1,42 +1,70 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { typedGet, typedPost, GetResponse, Entry } from './api/promise';
+import { typedGet, typedGetCategories, Entry, Category } from './api/promise';
 import { Task } from './Components/Task';
 import TaskInput from './Components/TaskInput';
+import { CategorySelector } from './Components/CategorySelector';
 
 function App() {
-  const [test, setTest] = useState<Entry[] | undefined>(undefined);
+  const [allTasks, setAllTasks] = useState<Entry[]>([]);
+  const [allCategories, setAllCategories] = useState<Category[]>([]);
+  const [filter, setFilter] = useState(0);
 
   useEffect(() => {
     typedGet()
       .then((response) => {
-        console.log('HERE:', response);
-        setTest(response.data);
+        setAllTasks(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    typedGetCategories()
+      .then((response) => {
+        console.log('Categoires Response:', response);
+        setAllCategories(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  if (test === undefined) {
+  if (allTasks === undefined) {
     return <p>No data returned</p>;
   } else {
     return (
       <div className="Tasks-Bar">
-        <TaskInput />
-        {test.map((spot: Entry) => {
-          return (
-            <Task
-              key={spot.id}
-              name={spot.name}
-              description={spot.description}
-              completed={spot.completed}
-              sub_tasks={spot.sub_tasks}
-              id={spot.id}
-              category_id={spot.category_id}
-            />
-          );
-        })}
+        <TaskInput allCategories={allCategories} />
+
+        <CategorySelector categories={allCategories} setFilter={setFilter} />
+        {filter === 0
+          ? allTasks.map((spot: Entry) => {
+              return (
+                <Task
+                  key={spot.id}
+                  name={spot.name}
+                  description={spot.description}
+                  completed={spot.completed}
+                  sub_tasks={spot.sub_tasks}
+                  id={spot.id}
+                  category_id={spot.category_id}
+                />
+              );
+            })
+          : allTasks.map((spot: Entry) => {
+              if (spot.category_id === filter) {
+                return (
+                  <Task
+                    key={spot.id}
+                    name={spot.name}
+                    description={spot.description}
+                    completed={spot.completed}
+                    sub_tasks={spot.sub_tasks}
+                    id={spot.id}
+                    category_id={spot.category_id}
+                  />
+                );
+              }
+            })}
       </div>
     );
   }
