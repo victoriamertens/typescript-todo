@@ -45,7 +45,7 @@ export default function TaskInput({
           onChange={(event) => setDescription(event.target.value)}
         ></input>
       </div>
-      <div>
+      <div id="category-selector">
         <label htmlFor="category">Select a Category:</label>
         <select
           name="category"
