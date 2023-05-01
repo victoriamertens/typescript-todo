@@ -34,8 +34,9 @@ function App() {
     return (
       <div className="Tasks-Bar">
         <TaskInput allCategories={allCategories} />
-
-        <CategorySelector categories={allCategories} setFilter={setFilter} />
+        <div id="filter-div">
+          <CategorySelector categories={allCategories} setFilter={setFilter} />
+        </div>
         {filter === 0
           ? allTasks.map((spot: Entry) => {
               return (

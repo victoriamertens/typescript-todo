@@ -7,3 +7,9 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+#filter-div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
