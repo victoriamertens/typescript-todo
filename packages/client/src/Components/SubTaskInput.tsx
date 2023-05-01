@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { postError } from '../ErrorHandling/errors';
 import { typedSubTaskPost } from '../api/promise';
+import './SubTaskInput.css';
 
 export function SubTaskInput({ taskId }: { taskId: Number }) {
   const [name, setName] = useState('');

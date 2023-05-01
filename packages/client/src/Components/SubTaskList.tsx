@@ -14,8 +14,18 @@ export const SubTaskList: FunctionComponent<SubTasksProp> = ({
 }) => {
   return (
     <div>
-      <p>SubTask function working </p>
-      {sub_tasks !== null && sub_tasks.map((subtask) => <p>{subtask.name}</p>)}
+      {sub_tasks !== null &&
+        sub_tasks.map((subtask) => (
+          <div>
+            <input
+              id={subtask.name}
+              className="task-checkbox"
+              type="checkbox"
+              defaultChecked={subtask.completed}
+            />
+            <label htmlFor={subtask.name}>{subtask.name}</label>
+          </div>
+        ))}
       <SubTaskInput taskId={taskId} />
     </div>
   );
